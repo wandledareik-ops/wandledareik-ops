@@ -141,3 +141,81 @@ Incorrect DNS configuration can cause problems such as:
 - Active Directory communication issues
 
 Understanding the relationship between **DNS and Active Directory** was an important part of configuring the lab successfully.
+---
+
+## 6. Organizing Active Directory with Organizational Units
+
+After creating the Blue Valley domain, I organized the Active Directory environment using **Organizational Units (OUs)**.
+
+Organizational Units provide a way to logically organize users, computers, and other Active Directory objects. In a business environment, OUs can be designed around departments, locations, job functions, or administrative requirements.
+
+![Creating Organizational Units](images/09-creating-organizational-units.png)
+
+For the Blue Valley environment, I created OUs to organize employee accounts based on their roles within the organization.
+
+**Why this was important:**  
+Keeping Active Directory objects organized makes the environment easier to administer and provides a structure that can later be used to apply Group Policy settings or delegate administrative responsibilities to specific groups of users or computers.
+
+---
+
+## 7. Creating Domain User Accounts
+
+After creating the Organizational Unit structure, I created domain user accounts and placed them into the appropriate OUs.
+
+![Domain Users in Organizational Units](images/10-domain-users-in-organizational-units.png)
+
+These accounts represented employees who would later be used during the Help Desk troubleshooting scenarios.
+
+Examples included:
+
+- **Sarah Johnson** - Accounting
+- **Mike Davis** - Accounting
+- **Emily Carter** - Accounting
+
+Creating these users as domain accounts allowed them to authenticate against Active Directory instead of relying on separate local Windows accounts.
+
+**Why this was important:**  
+Centralized user management allows an IT administrator to manage employee accounts, passwords, group memberships, access, and account status from Active Directory rather than configuring each workstation individually.
+
+This also created realistic user accounts that could later be used to simulate common Help Desk tasks such as account lockouts, permission problems, and employee onboarding.
+
+---
+
+## 8. Creating Active Directory Security Groups
+
+I also created Active Directory security groups to manage user access and permissions.
+
+![Active Directory Security Groups](images/11-active-directory-security-groups.png)
+
+Security groups allow administrators to assign permissions to a group instead of individually assigning the same permissions to every user.
+
+For example, rather than granting each Accounting employee access to an Accounting resource individually, access can be assigned to an Accounting security group. Users who require that access can then be added to the appropriate group.
+
+**Why this was important:**  
+Group-based access makes permissions easier to manage and helps keep access consistent as employees join, leave, or change roles within an organization.
+
+This concept would later be used during the Help Desk portion of the project when troubleshooting access to the Accounting department's shared folder.
+
+---
+
+## 9. Creating an IT Administrative Account
+
+In addition to the standard employee accounts, I configured a separate IT account for administrative tasks within the Blue Valley domain.
+
+![IT User and Domain Admin](images/12-it-user-domain-admin.png)
+
+The administrative account was given the permissions required to perform domain administration tasks.
+
+Using a separate administrative account demonstrates the concept of separating normal user activity from privileged administrative activity.
+
+**Why this was important:**  
+Administrative privileges provide the ability to make significant changes to a domain environment. Separating administrative access from standard user accounts helps reduce unnecessary use of elevated privileges and provides a clearer distinction between normal user activity and IT administration.
+
+The IT administrative account was used throughout the lab to perform tasks such as:
+
+- Managing domain users
+- Managing security groups
+- Unlocking user accounts
+- Modifying group memberships
+- Managing Active Directory objects
+- Supporting Help Desk troubleshooting
