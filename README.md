@@ -179,7 +179,7 @@ I created Emily's domain account in the appropriate Organizational Unit, configu
 - Employee onboarding
 - Help Desk service request documentation
 
-> **Detailed walkthrough coming next:** The Help Desk section of this repository will contain the screenshots, troubleshooting process, technical explanations, and ticket documentation for all three scenarios.
+➡️ [View the complete Help Desk Tickets walkthrough](help-desk/README.md)
 ---
 
 ## Project Takeaways
