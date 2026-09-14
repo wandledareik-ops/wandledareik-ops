@@ -101,7 +101,9 @@ This infrastructure provided the foundation for the Help Desk troubleshooting sc
 - Windows authentication
 - Basic PowerShell and command-line verification
 
-> **Detailed walkthrough coming next:** The Active Directory section of this repository will contain screenshots and step-by-step explanations showing how the Blue Valley domain environment was created and configured.
+### Active Directory Walkthrough
+
+➡️ [View the complete Active Directory Infrastructure walkthrough](active-directory/README.md)
 ---
 
 # Part 2 - Help Desk Ticketing Scenarios
