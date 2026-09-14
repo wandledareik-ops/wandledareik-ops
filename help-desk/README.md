@@ -664,3 +664,164 @@ This scenario demonstrated that Help Desk work involves more than troubleshootin
 New employee onboarding is an example of a **service request** where IT provisions the accounts and access an employee needs to perform their job.
 
 The account was not considered fully provisioned simply because it existed in Active Directory. I verified both successful domain authentication and access to the Accounting resources required for Emily's role before completing the request.
+---
+
+# Help Desk Lab Summary
+
+## Skills Demonstrated
+
+Through the three Help Desk scenarios in this project, I gained hands-on experience with both technical troubleshooting and structured IT support processes.
+
+### Active Directory Administration
+
+- Creating and managing domain user accounts
+- Unlocking user accounts
+- Managing Active Directory security groups
+- Managing Organizational Unit placement
+- Configuring user account settings
+- Provisioning new employee accounts
+
+### Authentication and Access Management
+
+- Troubleshooting Windows domain authentication
+- Understanding authentication vs. authorization
+- Managing role-based access through security groups
+- Troubleshooting user group memberships
+- Understanding Windows security tokens
+- Verifying user access after configuration changes
+
+### Windows File and Permission Management
+
+- Creating Windows shared folders
+- Configuring share permissions
+- Configuring NTFS permissions
+- Using security groups to control resource access
+- Troubleshooting access denied errors
+- Working with UNC paths such as `\\BV-DC01\Accounting`
+
+### Windows and Command-Line Troubleshooting
+
+- `whoami`
+- `whoami /groups`
+- `net accounts`
+- `gpupdate /force`
+- Remote Desktop
+- Windows domain login testing
+- Group Policy
+- Active Directory Users and Computers (ADUC)
+
+### Help Desk Operations
+
+- Working with incidents and service requests
+- Reviewing reported symptoms
+- Reproducing user issues
+- Gathering troubleshooting information
+- Identifying root causes
+- Implementing appropriate resolutions
+- Verifying solutions from the user's perspective
+- Writing internal ticket notes
+- Documenting resolutions
+- Closing tickets after successful verification
+
+---
+
+## Troubleshooting Lessons
+
+The three scenarios demonstrated different types of Help Desk work.
+
+### Sarah Johnson - Authentication
+
+Sarah's account lockout demonstrated an **authentication problem**. Her account existed and had the appropriate access, but the locked account prevented her from successfully authenticating to the domain.
+
+The issue was resolved by identifying the account lockout as the root cause, unlocking the account, and verifying successful domain authentication.
+
+### Mike Davis - Authorization
+
+Mike's shared-folder issue demonstrated an **authorization problem**.
+
+Mike could successfully authenticate to the Blue Valley domain, but his account was not a member of the security group used to authorize access to the Accounting shared folder.
+
+The issue was resolved by correcting his Active Directory security group membership, refreshing his Windows logon session, and verifying access from his account.
+
+### Emily Carter - Provisioning
+
+Emily's onboarding request demonstrated **user provisioning and access management**.
+
+Rather than repairing an existing problem, the request required creating a new domain identity and assigning the access appropriate for an Accounting employee.
+
+The request was completed only after both domain authentication and Accounting resource access were successfully verified.
+
+---
+
+## Project Takeaways
+
+This lab reinforced that effective Help Desk troubleshooting involves more than making configuration changes.
+
+A structured troubleshooting process helped me move from the user's reported symptom to the actual root cause of each issue:
+
+**Reported Issue → Reproduce → Investigate → Identify Root Cause → Resolve → Verify → Document → Close**
+
+One of the most important lessons from the project was the distinction between **authentication** and **authorization**.
+
+Authentication answers:
+
+> **Who is the user?**
+
+Authorization answers:
+
+> **What is the user allowed to access?**
+
+Mike's ticket provided a practical example of this distinction. His successful domain login proved that his identity could be authenticated, while his missing Accounting security group membership prevented him from being authorized to access the departmental resource.
+
+The project also demonstrated the value of using Active Directory security groups to manage access based on job responsibilities rather than assigning permissions directly to individual users.
+
+Finally, each scenario reinforced the importance of verification. A ticket was not considered complete simply because a change had been made. The solution was tested from the user's perspective before the ticket was documented and closed.
+
+---
+
+## Technologies Used
+
+- Microsoft Azure
+- Windows Server
+- Windows 11
+- Active Directory Domain Services (AD DS)
+- Active Directory Users and Computers (ADUC)
+- DNS
+- Group Policy
+- PowerShell / Command Prompt
+- Remote Desktop Protocol (RDP)
+- Windows File Sharing
+- NTFS Permissions
+- Active Directory Security Groups
+- osTicket
+- GitHub
+
+---
+
+## Project Navigation
+
+This Help Desk lab is the second part of the complete **Blue Valley IT Help Desk Lab**.
+
+### Part 1 - Active Directory Infrastructure
+
+[View the Active Directory Infrastructure Walkthrough](../active-directory/README.md)
+
+Documents the creation of the Azure virtual machines, Windows domain, DNS configuration, Organizational Units, users, security groups, and domain-joined workstation used throughout the Help Desk scenarios.
+
+### Part 2 - Help Desk Ticketing Scenarios
+
+This README documents the three Help Desk scenarios performed using the completed Blue Valley Active Directory environment.
+
+### Main Project
+
+[← Return to the Blue Valley IT Help Desk Lab Overview](../README.md)
+
+---
+
+## Conclusion
+
+The Blue Valley IT Help Desk Lab provided hands-on experience building a Windows domain environment and using that infrastructure to solve realistic IT support problems.
+
+By combining Active Directory administration with Help Desk ticket management, the project demonstrates my ability to work through common entry-level IT support tasks while following a structured troubleshooting and documentation process.
+
+The completed lab demonstrates experience with user account administration, domain authentication, access control, security groups, Windows permissions, employee onboarding, troubleshooting, verification, and ticket documentation.
