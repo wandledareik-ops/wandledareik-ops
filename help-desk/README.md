@@ -486,3 +486,181 @@ Mike could successfully sign into the Blue Valley domain, meaning his identity w
 Access to the Accounting folder was controlled through the `GG-Accounting-Share` security group. Because Mike was not originally a member of that group, he was not authorized to access the resource.
 
 The issue was resolved by correcting the group membership rather than changing the folder permissions or Mike's password.
+---
+
+# Ticket #3 - Emily Carter: New Employee Onboarding
+
+## Ticket Summary
+
+**User:** Emily Carter  
+**Department:** Accounting  
+**Ticket Type:** Service Request  
+**Request:** Create and configure a new domain account for a new Accounting employee.
+
+Unlike the previous two tickets, this request was not submitted because an existing service had failed. The objective was to provision a new employee account with the appropriate settings and access required for Emily's role in the Accounting department.
+
+---
+
+## 1. Reviewing the Service Request
+
+A new employee onboarding request was created in osTicket for Emily Carter.
+
+![Emily Service Request](images/21-emily-service-request.png)
+
+The request required the creation of a Blue Valley domain account and access to the resources required by an Accounting employee.
+
+Before creating the account, I identified the access Emily would need based on her department and role.
+
+**Why this was important:**  
+New employee onboarding should provide the access required for the employee to perform their job while avoiding unnecessary permissions.
+
+---
+
+## 2. Creating Emily's Active Directory Account
+
+Using Active Directory Users and Computers, I created a new domain user account for Emily Carter.
+
+![Creating Emily Account](images/22-create-emily-account.png)
+
+The account was created with the username:
+
+`ecarter`
+
+Emily's account was placed in the appropriate Organizational Unit for the Blue Valley environment.
+
+An initial temporary password was configured, and the account was set to require a password change at first logon.
+
+> **Security Note:** Passwords and other authentication secrets are intentionally not documented in this repository.
+
+**Why this was important:**  
+Creating the account within Active Directory allows Emily to use a centralized domain identity rather than a separate local account on an individual workstation.
+
+Requiring a password change at first logon also allows the employee to establish a password that is not known by the administrator after the initial account setup.
+
+---
+
+## 3. Assigning Accounting Access
+
+Because Emily was joining the Accounting department, I added her domain account to the appropriate Accounting security group.
+
+![Adding Emily to Accounting Security Group](images/23-emily-accounting-group.png)
+
+Emily was added to:
+
+`GG-Accounting-Share`
+
+The Accounting shared-folder permissions were already assigned to this security group. Therefore, I did not need to modify the folder permissions specifically for Emily.
+
+**Why this was important:**  
+Access was assigned based on the employee's role through group membership rather than directly assigning permissions to an individual user.
+
+This provides a more manageable approach because the resource permissions remain attached to the security group while employee access can be controlled through group membership.
+
+---
+
+## 4. Verifying Domain Authentication
+
+After creating and configuring Emily's account, I tested the account from the domain-joined BV-Client01 workstation.
+
+![Verifying Emily Domain Account](images/24-emily-domain-login.png)
+
+During the initial sign-in process, the temporary password configuration required the password to be changed.
+
+After completing the first-login process, I verified that Emily could successfully authenticate to the Blue Valley domain.
+
+The authenticated domain account was:
+
+`bluevalley\ecarter`
+
+**Why verification was important:**  
+Creating an account in Active Directory does not by itself prove that the employee can successfully use it.
+
+Testing the account from a domain-joined workstation confirmed that Emily could authenticate using her new Blue Valley identity.
+
+---
+
+## 5. Verifying Accounting Resource Access
+
+After confirming successful domain authentication, I tested Emily's access to the Accounting shared folder:
+
+`\\BV-DC01\Accounting`
+
+![Emily Accounting Share Access](images/25-emily-share-access.png)
+
+Emily was able to access the Accounting folder and the test document successfully.
+
+This verified that her membership in `GG-Accounting-Share` provided the expected departmental access.
+
+At this point, both major onboarding requirements had been verified:
+
+- **Authentication** - Emily could successfully sign into the Blue Valley domain.
+- **Authorization** - Emily could successfully access the Accounting resource required for her role.
+
+---
+
+## 6. Documenting the Onboarding Work
+
+After verifying the new account and departmental access, I documented the completed work in the osTicket service request.
+
+![Emily Internal Note](images/26-emily-internal-note.png)
+
+The internal documentation included:
+
+- Creation of Emily's Active Directory account
+- Appropriate Organizational Unit placement
+- Initial password configuration
+- Required password change at first logon
+- Accounting security group assignment
+- Successful domain authentication
+- Successful Accounting resource access
+
+Documenting these actions provides a record of what was provisioned and how the request was verified.
+
+---
+
+## 7. Closing the Service Request
+
+After confirming that Emily's account was functioning correctly and that she had access to the required Accounting resource, I completed and closed the service request.
+
+![Emily Ticket Closed](images/27-emily-ticket-closed.png)
+
+### Final Resolution
+
+- Created the `ecarter` Active Directory domain account.
+- Placed the account in the appropriate Organizational Unit.
+- Configured an initial temporary password.
+- Required a password change at first logon.
+- Added Emily to `GG-Accounting-Share`.
+- Verified successful authentication from BV-Client01.
+- Verified access to `\\BV-DC01\Accounting`.
+- Documented the completed onboarding work in osTicket.
+- Closed the service request after successful verification.
+
+---
+
+## Ticket #3 - Skills Demonstrated
+
+This service request demonstrated hands-on experience with:
+
+- Active Directory user provisioning
+- Active Directory Users and Computers
+- Organizational Units
+- User account configuration
+- Password management
+- Active Directory security groups
+- Role-based access
+- Windows domain authentication
+- Shared-folder access
+- Authentication vs. authorization
+- New employee onboarding
+- Post-configuration verification
+- Help Desk documentation
+- Service request fulfillment
+
+### Key Takeaway
+
+This scenario demonstrated that Help Desk work involves more than troubleshooting broken services.
+
+New employee onboarding is an example of a **service request** where IT provisions the accounts and access an employee needs to perform their job.
+
+The account was not considered fully provisioned simply because it existed in Active Directory. I verified both successful domain authentication and access to the Accounting resources required for Emily's role before completing the request.
