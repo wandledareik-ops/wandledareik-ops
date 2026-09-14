@@ -1,4 +1,4 @@
-[← Back to Main Project](../README.md)
+README.md
 
 # Blue Valley Help Desk Ticketing Scenarios
 
