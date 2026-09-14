@@ -219,3 +219,108 @@ The IT administrative account was used throughout the lab to perform tasks such 
 - Modifying group memberships
 - Managing Active Directory objects
 - Supporting Help Desk troubleshooting
+---
+
+## 10. Joining BV-Client01 to the Blue Valley Domain
+
+With the domain controller, DNS, users, groups, and Organizational Units configured, I joined the Windows 11 client workstation, **BV-Client01**, to the Blue Valley domain.
+
+Before joining the computer to the domain, the client's DNS configuration was set so that it could locate BV-DC01 and the Active Directory services running on it.
+
+I then joined BV-Client01 to the domain using the Windows system settings and authenticated the domain join using an account with the appropriate permissions.
+
+![Joining Client to Domain](images/13-joining-client-to-domain.png)
+
+After the domain join was completed, the workstation was restarted so the change could take effect.
+
+**Why this was important:**  
+Joining BV-Client01 to the domain allowed the workstation to use Active Directory for centralized authentication and management.
+
+Instead of relying only on local Windows accounts, Blue Valley domain users could now sign into the workstation using their domain credentials.
+
+This also allowed BV-Client01 to be used as the employee workstation for the Help Desk troubleshooting scenarios performed later in the project.
+
+---
+
+## 11. Verifying the Active Directory Environment
+
+After completing the domain configuration, I performed command-line verification to confirm that the environment was functioning correctly.
+
+![PowerShell AD and DNS Verification](images/14-powershell-ad-dns-verification.png)
+
+The verification process helped confirm that the domain controller and DNS configuration were operating as expected and that the environment was ready for domain-based user authentication and Help Desk testing.
+
+**Why verification was important:**  
+A successful configuration should be tested rather than assumed to be working. Verification provides evidence that the individual components of the environment can communicate and that the expected domain services are available.
+
+This troubleshooting mindset would also be used throughout the Help Desk scenarios: identify the expected result, perform the appropriate configuration or remediation, and then verify that the solution actually resolved the issue.
+
+---
+
+## Active Directory Infrastructure Complete
+
+At this point, the Blue Valley Active Directory environment included:
+
+- An Azure-hosted Windows Server domain controller
+- An Azure-hosted Windows 11 client workstation
+- Active Directory Domain Services
+- DNS services
+- A Windows domain environment
+- Organizational Units
+- Domain user accounts
+- Active Directory security groups
+- A separate IT administrative account
+- A domain-joined Windows workstation
+- Centralized domain authentication
+
+The completed infrastructure provided the foundation required to simulate common IT Help Desk support scenarios.
+
+---
+
+## Skills Demonstrated
+
+Through this portion of the project, I gained hands-on experience with:
+
+- Microsoft Azure virtual machines
+- Azure virtual networking
+- Windows Server administration
+- Windows 11 administration
+- Active Directory Domain Services (AD DS)
+- Domain controller configuration
+- DNS configuration and troubleshooting
+- Active Directory Users and Computers (ADUC)
+- Organizational Units (OUs)
+- Domain user administration
+- Active Directory security groups
+- Administrative account management
+- Domain joining
+- Windows domain authentication
+- PowerShell and command-line verification
+- Basic identity and access management concepts
+- Technical documentation
+
+---
+
+## Key Takeaways
+
+Building the Blue Valley Active Directory environment helped demonstrate how several Windows infrastructure technologies work together.
+
+I learned that Active Directory is not simply a tool for creating user accounts. A functioning domain environment depends on properly configured networking, DNS, domain controllers, users, computers, groups, and permissions working together.
+
+I also gained a better understanding of the difference between **authentication** and **authorization**. Active Directory can authenticate a user and confirm their identity, while security groups and permissions can be used to determine which resources that authenticated user is authorized to access.
+
+This distinction became especially important during the Help Desk troubleshooting portion of the project.
+
+---
+
+## Next: Help Desk Ticketing Scenarios
+
+With the Active Directory infrastructure complete, the next phase of the project uses this environment to simulate real-world IT support requests through osTicket.
+
+The Help Desk portion includes:
+
+1. **Account Lockout** - Troubleshooting and restoring access for Sarah Johnson.
+2. **Shared Folder Access** - Diagnosing and resolving Mike Davis's access to an Accounting resource.
+3. **New Employee Onboarding** - Creating and configuring an Active Directory account for Emily Carter.
+
+[← Back to Main Project](../README.md)
